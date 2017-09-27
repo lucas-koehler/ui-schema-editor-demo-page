@@ -32904,9 +32904,7 @@ var getReferenceTargetData = function (href) {
     var localTemplatePath;
     if (_.startsWith(href, resource_set_1.RS_PROTOCOL)) {
         var resourceName = href.substring(resource_set_1.RS_PROTOCOL.length).split('/')[0];
-        console.log('resource name', resourceName);
         localTemplatePath = href.substring(resource_set_1.RS_PROTOCOL.length + resourceName.length + 1);
-        console.log('local template path', localTemplatePath);
         rootData = core_1.JsonForms.resources.getResource(resourceName);
         // reference to data in resource set
     }
@@ -34834,7 +34832,8 @@ var TreeMasterDetailRenderer = (function (_super) {
             childParent.setAttribute('children', key);
             li.appendChild(childParent);
         }
-        this.expandObject(newData, childParent, schema, deleteFunction);
+        var created = this.expandObject(newData, childParent, schema, deleteFunction);
+        this.renderDetail(newData, created, schema);
     };
     /**
      * Renders a data object as a <li> child element of the given <ul> list.
@@ -34854,6 +34853,9 @@ var TreeMasterDetailRenderer = (function (_super) {
             spanIcon.classList.add('icon');
             spanIcon.classList.add(this.uischema.options.imageProvider[schema.id]);
             div.appendChild(spanIcon);
+            spanIcon.onclick = function (ev) {
+                _this.renderDetail(data, li, schema);
+            };
         }
         var span = document.createElement('span');
         span.classList.add('label');
@@ -34956,6 +34958,7 @@ var TreeMasterDetailRenderer = (function (_super) {
             }
         });
         parent.appendChild(li);
+        return li;
     };
     /**
      * use the model mapping to match a data object to one ContainmentProperty out of a given list
