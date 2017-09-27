@@ -26980,7 +26980,7 @@ var UiSchemaEditor = /** @class */ (function (_super) {
         this.registerUiSchemas();
         this.configureSchema();
         this.editor.registerResource('json-schema-04', schema_modified_1.schemaFourMod);
-        this.editor.registerResource('dataSchema', referencedDataSchema_1.referencedSchema);
+        this.editor.registerResource('dataSchema', referencedDataSchema_1.evaluationSchema);
         this.editor.data = this.dataObject;
         this.appendChild(this.editor);
     };
@@ -31962,20 +31962,32 @@ exports.referencedSchema = {
 exports.evaluationSchema = {
     'type': 'object',
     'properties': {
-        'name': { 'type': 'string' },
-        'birthday': {
+        'firstName': { 'type': 'string' },
+        'lastName': { 'type': 'string' },
+        'email': { 'type': 'string', 'format': 'email' },
+        'dateOfBirth': {
             'type': 'string',
-            'format': 'data'
+            'format': 'date'
+        },
+        'timeOfRegistration': {
+            'type': 'string',
+            'format': 'date-time'
+        },
+        'gender': { 'type': 'string', 'enum': ['Male', 'Female'] },
+        'nationality': {
+            'type': 'string',
+            'enum': ['UK', 'US', 'German', 'French', 'Russian']
         },
         'alive': { 'type': 'boolean' },
         'address': {
             'properties': {
                 'street': { 'type': 'string' },
+                'street-number': { 'type': 'integer' },
                 'city': { 'type': 'string' }
             }
         }
     },
-    'required': ['name', 'birthday']
+    'required': ['lastName', 'email']
 };
 
 
@@ -32125,6 +32137,7 @@ exports.schemaFourMod = {
                 }
             ]
         },
+        'format': { 'type': 'string' },
         'allOf': { '$ref': '#/definitions/schemaArray' },
         'anyOf': { '$ref': '#/definitions/schemaArray' },
         'oneOf': { '$ref': '#/definitions/schemaArray' },
