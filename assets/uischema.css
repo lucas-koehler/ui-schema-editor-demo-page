@@ -15,29 +15,29 @@ body {
 }
 
 .icon.categorization {
-  background-image: url('../Categorization.gif');
+  background-image: url('../icons/Categorization.gif');
 }
 
 .icon.category {
-  background-image: url('../Category.gif');
+  background-image: url('../icons/Category.gif');
 }
 
 .icon.control {
-  background-image: url('../Control.gif');
+  background-image: url('../icons/Control.gif');
 }
 
 .icon.masterdetaillayout {
-  background-image: url('../TreeMasterDetail.gif');
+  background-image: url('../icons/TreeMasterDetail.gif');
 }
 
 .icon.layout {
-  background-image: url('../Layout.gif');
+  background-image: url('../icons/Layout.gif');
 }
 
 .icon.view {
-  background-image: url('../View.gif');
+  background-image: url('../icons/View.gif');
 }
 
 .icon.group {
-  background-image: url('../Group.gif');
+  background-image: url('../icons/Group.gif');
 }
